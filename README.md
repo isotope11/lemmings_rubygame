@@ -3,6 +3,11 @@
 This is a project meant to use the lemmings gem to render a lemmings game using
 rubygame
 
+## Run it
+
+    ruby lib/lemmings_rubygame.rb
+    # NOTE: We should get some Thor action up in here
+
 ## Installation
 Make sure you see [the rubygame project](https://github.com/rubygame/rubygame/wiki/Linux-Install-Guide) to see the rubygame installation docs
 
