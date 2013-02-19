@@ -1,0 +1,14 @@
+PATH
+  remote: ~/ruby/lemmings
+  specs:
+    lemmings (0.0.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  lemmings!
