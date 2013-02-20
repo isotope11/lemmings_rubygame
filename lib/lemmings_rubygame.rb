@@ -13,6 +13,7 @@ class LemmingsRubygame
 		@queue = Rubygame::EventQueue.new
 		@clock = Rubygame::Clock.new
 		@clock.target_framerate = 30
+
     TTF.setup
     filename = File.join(File.dirname(__FILE__), '..', 'resources', 'fonts', 'AgentOrange.ttf')
     @agent_orange_font = TTF.new filename, 12
@@ -39,6 +40,7 @@ class LemmingsRubygame
 	def draw
     test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}", true, [123,123,123]
     test.blit @screen, [@screen.w-test.w-6, 6]
+
 		@screen.flip
 	end
 end
