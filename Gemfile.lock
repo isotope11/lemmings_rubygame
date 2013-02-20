@@ -2,11 +2,16 @@ PATH
   remote: ~/ruby/lemmings
   specs:
     lemmings (0.0.1)
+      celluloid
 
 GEM
   remote: http://rubygems.org/
   specs:
+    celluloid (0.12.4)
+      facter (>= 1.6.12)
+      timers (>= 1.0.0)
     coderay (1.0.9)
+    facter (1.6.17)
     ffi (1.4.0)
     method_source (0.8.1)
     nice-ffi (0.4)
@@ -22,6 +27,7 @@ GEM
       rake (>= 0.7.0)
       ruby-sdl-ffi (>= 0.1.0)
     slop (3.4.3)
+    timers (1.1.0)
 
 PLATFORMS
   ruby

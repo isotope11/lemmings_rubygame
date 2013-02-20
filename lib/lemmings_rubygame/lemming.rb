@@ -9,7 +9,7 @@ module LemmingsRubygame
       @image = Surface["lemming.png"]
       @rect  = @image.make_rect
 
-      @angle = 2*Math::PI * rand
+      @lemming = Lemmings::Lemming.new
     end
 
     # Animate this object.  "seconds_passed" contains the number of ( real-world)
@@ -17,12 +17,8 @@ module LemmingsRubygame
     # therefore useful for working out how far the object should move ( which
     # should be independent of the frame rate)
     def update seconds_passed
-      # This example makes the objects orbit around the center of the screen.
-      # The objects make one orbit every 4 seconds
-      @angle = ( @angle + 2*Math::PI / 4 * seconds_passed) % ( 2*Math::PI)
-
-      @rect.topleft = [ 320 + 100 * Math.sin(@angle),
-                        240 - 100 * Math.cos(@angle)]
+      @lemming.update(seconds_passed)
+      @rect.topleft = @lemming.topleft
     end
 
     def draw on_surface
