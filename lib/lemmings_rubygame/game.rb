@@ -6,7 +6,7 @@ module LemmingsRubygame
 
       @queue = Rubygame::EventQueue.new
       @clock = Rubygame::Clock.new
-      @clock.target_framerate = 30
+      @clock.target_framerate = 60
 
       # Create The Background
       @background = Surface.new(@screen.size)
