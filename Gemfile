@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 
-gem 'lemmings', path: '~/ruby/lemmings'
+gem 'lemmings', path: '../lemmings'
 gem 'rubygame'
 gem 'pry'

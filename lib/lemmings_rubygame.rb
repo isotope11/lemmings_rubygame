@@ -12,7 +12,6 @@ module LemmingsRubygame
 end
 
 require_relative './lemmings_rubygame/game.rb'
-require_relative './lemmings_rubygame/lemming.rb'
 
 game = LemmingsRubygame::Game.new
 game.run

@@ -24,6 +24,5 @@ module LemmingsRubygame
     def draw on_surface
       @image.blit on_surface, @rect
     end
-
   end
 end

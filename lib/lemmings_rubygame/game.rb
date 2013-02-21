@@ -1,3 +1,5 @@
+require_relative './lemming.rb'
+
 module LemmingsRubygame
   class Game
     def initialize
@@ -6,7 +8,7 @@ module LemmingsRubygame
 
       @queue = Rubygame::EventQueue.new
       @clock = Rubygame::Clock.new
-      @clock.target_framerate = 60
+      @clock.target_framerate = 30
 
       # Create The Background
       @background = Surface.new(@screen.size)
@@ -16,24 +18,41 @@ module LemmingsRubygame
       font_filename = File.expand_path('../../../resources/fonts/AgentOrange.ttf', __FILE__)
       @agent_orange_font = TTF.new font_filename, 12
 
-      @lemming = Lemming.new
+      @lemmings = [] # Lemmings get added to this array
+      @lemmings << Lemming.new
     end
 
     def run
       loop do
+        @tick = @clock.tick
         update
         draw
-        @clock.tick
       end
     end
 
+    private
+    def draw_version
+      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}.  # Lemmings: #{@lemmings.count}", true, [123,123,123]
+      test.blit @screen, [@screen.w-test.w-6, 6]
+    end
+
+    def seconds_passed_since_last_tick
+      @tick / 1000.0
+    end
+
+    def seconds_passed
+      @clock.lifetime / 1000.0
+    end
+
     def update
-      @lemming.update(@clock.tick/1000.0)
+      @lemmings.each{|l| l.update(seconds_passed_since_last_tick) }
       @queue.each do |ev|
         case ev
-          when Rubygame::QuitEvent
-            Rubygame.quit
-            exit
+        when MouseDownEvent
+          @lemmings << Lemming.new
+        when Rubygame::QuitEvent
+          Rubygame.quit
+          exit
         end
       end
     end
@@ -41,15 +60,9 @@ module LemmingsRubygame
     def draw
       @background.blit(@screen, [0, 0])
       draw_version
-      @lemming.draw(@screen)
+      @lemmings.each{|l| l.draw(@screen) }
 
       @screen.flip
-    end
-
-    private
-    def draw_version
-      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}", true, [123,123,123]
-      test.blit @screen, [@screen.w-test.w-6, 6]
     end
   end
 end

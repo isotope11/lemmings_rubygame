@@ -1,5 +1,5 @@
 PATH
-  remote: ~/ruby/lemmings
+  remote: ../lemmings
   specs:
     lemmings (0.0.1)
       celluloid
