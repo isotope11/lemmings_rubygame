@@ -32,7 +32,7 @@ module LemmingsRubygame
 
     private
     def draw_version
-      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}.  # Lemmings: #{@lemmings.count}", true, [123,123,123]
+      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}.  # Lemmings: #{@lemmings.count}.  FPS: #{@clock.framerate.to_i}", true, [123,123,123]
       test.blit @screen, [@screen.w-test.w-6, 6]
     end
 
