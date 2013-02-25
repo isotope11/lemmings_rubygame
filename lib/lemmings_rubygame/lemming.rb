@@ -17,7 +17,7 @@ module LemmingsRubygame
       # We don't really want to be doing this.  We want the lemmings
       # to each have their own clock, operate on their own, and have this
       # sprite subscribe to notifications they send out when they change
-      @lemming.tick
+      #@lemming.tick
       @rect.topleft = [@lemming.x, @lemming.y]
     end
 

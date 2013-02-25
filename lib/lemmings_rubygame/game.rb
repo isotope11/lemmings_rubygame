@@ -51,6 +51,7 @@ module LemmingsRubygame
         when MouseDownEvent
           lemming = Lemmings::Lemming.new(@world)
           @world.add_object(lemming, Lemmings::World::Position.new(x=0, y=0))
+          lemming.start_timer
           @lemmings << Lemming.new(lemming)
         when Rubygame::QuitEvent
           Rubygame.quit
