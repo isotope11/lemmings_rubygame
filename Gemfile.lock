@@ -21,6 +21,7 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rake (10.0.3)
+    ruby-prof (0.12.2)
     ruby-sdl-ffi (0.4)
       nice-ffi (>= 0.2)
     rubygame (2.6.4)
@@ -35,4 +36,5 @@ PLATFORMS
 DEPENDENCIES
   lemmings!
   pry
+  ruby-prof
   rubygame

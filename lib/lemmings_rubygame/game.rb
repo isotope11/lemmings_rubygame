@@ -8,7 +8,7 @@ module LemmingsRubygame
 
       @queue = Rubygame::EventQueue.new
       @clock = Rubygame::Clock.new
-      @clock.target_framerate = 30
+      @clock.target_framerate = 60
 
       # Create The Background
       @background = Surface.new(@screen.size)
@@ -50,7 +50,7 @@ module LemmingsRubygame
         case ev
         when MouseDownEvent
           lemming = Lemmings::Lemming.new(@world)
-          @world.add_object(lemming, Lemmings::World::Position.new(x=0, y=0))
+          @world.add_object(lemming, Lemmings::World::Position.new(x:0, y:0))
           lemming.start_timer
           @lemmings << Lemming.new(lemming)
         when Rubygame::QuitEvent
