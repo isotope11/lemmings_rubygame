@@ -18,7 +18,7 @@ module LemmingsRubygame
       font_filename = File.expand_path('../../../resources/fonts/AgentOrange.ttf', __FILE__)
       @agent_orange_font = TTF.new font_filename, 12
 
-      @world = Lemmings::World.new(100, 100)
+      @world = Lemmings::World.new(640,480)
       @lemmings = []
     end
 
