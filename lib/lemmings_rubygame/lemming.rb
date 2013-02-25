@@ -2,23 +2,23 @@ module LemmingsRubygame
   class Lemming
     include Rubygame::Sprites::Sprite
 
-    def initialize
-      super
+    # Initialize it with the lemming from a simulation
+    def initialize(lemming)
+      super()
 
       # @image and @rect are expected by the Rubygame sprite code
       @image = Surface["lemming.png"]
       @rect  = @image.make_rect
 
-      @lemming = Lemmings::Lemming.new
+      @lemming = lemming
     end
 
-    # Animate this object.  "seconds_passed" contains the number of ( real-world)
-    # seconds that have passed since the last time this object was updated and is
-    # therefore useful for working out how far the object should move ( which
-    # should be independent of the frame rate)
-    def update seconds_passed
-      @lemming.update(seconds_passed)
-      @rect.topleft = @lemming.topleft
+    def update
+      # We don't really want to be doing this.  We want the lemmings
+      # to each have their own clock, operate on their own, and have this
+      # sprite subscribe to notifications they send out when they change
+      @lemming.tick
+      @rect.topleft = [@lemming.x, @lemming.y]
     end
 
     def draw on_surface

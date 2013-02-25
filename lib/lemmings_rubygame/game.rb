@@ -18,8 +18,8 @@ module LemmingsRubygame
       font_filename = File.expand_path('../../../resources/fonts/AgentOrange.ttf', __FILE__)
       @agent_orange_font = TTF.new font_filename, 12
 
-      @lemmings = [] # Lemmings get added to this array
-      @lemmings << Lemming.new
+      @world = Lemmings::World.new(100, 100)
+      @lemmings = []
     end
 
     def run
@@ -32,7 +32,7 @@ module LemmingsRubygame
 
     private
     def draw_version
-      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}.  # Lemmings: #{@lemmings.count}.  FPS: #{@clock.framerate.to_i}", true, [123,123,123]
+      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}. # Lemmings: #{@lemmings.count}.  FPS: #{@clock.framerate.to_i}", true, [123,123,123]
       test.blit @screen, [@screen.w-test.w-6, 6]
     end
 
@@ -45,11 +45,13 @@ module LemmingsRubygame
     end
 
     def update
-      @lemmings.each{|l| l.update(seconds_passed_since_last_tick) }
+      @lemmings.map(&:update)
       @queue.each do |ev|
         case ev
         when MouseDownEvent
-          @lemmings << Lemming.new
+          lemming = Lemmings::Lemming.new(@world)
+          @world.add_object(lemming, Lemmings::World::Position.new(x=0, y=0))
+          @lemmings << Lemming.new(lemming)
         when Rubygame::QuitEvent
           Rubygame.quit
           exit
