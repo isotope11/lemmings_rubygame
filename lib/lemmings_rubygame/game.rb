@@ -19,6 +19,9 @@ module LemmingsRubygame
       @agent_orange_font = TTF.new font_filename, 12
 
       @world = Lemmings::World.new(640,480)
+      position = Lemmings::World::Position.new(x: 500, y: 0)
+      @world.winning_lemmings = 1
+      @world.exit_at(position)
       @lemmings = []
     end
 
@@ -32,7 +35,7 @@ module LemmingsRubygame
 
     private
     def draw_version
-      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}. # Lemmings: #{@lemmings.count}.  FPS: #{@clock.framerate.to_i}", true, [123,123,123]
+      test = @agent_orange_font.render "Lemmings Version #{Lemmings::VERSION}. # Lemmings: #{@lemmings.count}.  FPS: #{@clock.framerate.to_i}, Won? #{@world.win?}", true, [123,123,123]
       test.blit @screen, [@screen.w-test.w-6, 6]
     end
 
